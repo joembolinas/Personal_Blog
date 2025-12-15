@@ -54,6 +54,7 @@ You can implement basic authentication for the admin section. You can either use
 
 After completing this project, you will have practised templating, filesystem operations, basic authentication, form handling, and rendering HTML pages from the server. You can extend this project further by adding features like comments, categories, tags, search functionality, etc. Make sure to check the other backend projects that go into more advanced topics like databases, APIs, security best practices etc.
 
+
 ---
 
 Start Building
