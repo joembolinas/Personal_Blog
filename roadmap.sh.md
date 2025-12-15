@@ -54,3 +54,15 @@ You can implement basic authentication for the admin section. You can either use
 
 After completing this project, you will have practised templating, filesystem operations, basic authentication, form handling, and rendering HTML pages from the server. You can extend this project further by adding features like comments, categories, tags, search functionality, etc. Make sure to check the other backend projects that go into more advanced topics like databases, APIs, security best practices etc.
 
+---
+
+Start Building
+Follow these steps to complete the project.
+
+1. Create a new public repository on GitHub.
+
+2. Complete the project according to the requirements and push your code to the GitHub repository.
+
+3. Add a README file with instructions to run the project and the project page URL : https://roadmap.sh/projects/personal-blog
+
+4. Once done, submit your solution to help the others learn and get feedback from the community.
