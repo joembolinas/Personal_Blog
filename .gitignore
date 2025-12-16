@@ -9,5 +9,14 @@ mcp.json
 
 *.venv/
 *.env
+.vscode/
+.github/
+.venv/
+.env
+
+# Option A: Track article JSON files in `data/` so content is versioned.
+# Ensure data/ and JSON files are not ignored by parent/global rules.
+!data/
+!data/*.json
 .github/agents/4.1-Beast.agent.md
 docs/project_memory.md
