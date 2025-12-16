@@ -111,10 +111,10 @@ Open:
 
 The repository includes curated documentation to onboard contributors and guide implementations. Read these first:
 
-- [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — Contributor workflow, Copilot customization, and project practices.
-- [docs/PROJECT_ARCHITECTURE.md](docs/PROJECT_ARCHITECTURE.md) — Architecture decisions and component responsibilities.
-- [docs/EPIC-PRD.md](docs/EPIC-PRD.md) — Epic-level product requirements and feature breakdowns.
-- [docs/TECH-STACK.md](docs/TECH-STACK.md) — Recommended packages and versions.
+- [docs/DEVELOPMENT_WORKFLOW.md](docs/project/DEVELOPMENT_WORKFLOW.md) — Contributor workflow, Copilot customization, and project practices.
+- [docs/PROJECT_ARCHITECTURE.md](docs/project/PROJECT_ARCHITECTURE.md) — Architecture decisions and component responsibilities.
+- [docs/EPIC-PRD.md](docs/project/EPIC-PRD.md) — Epic-level product requirements and feature breakdowns.
+- [docs/TECH-STACK.md](docs/project/TECH-STACK.md) — Recommended packages and versions.
 - [docs/Project_Folders_Structure_Blueprint.md](docs/Project_Folders_Structure_Blueprint.md) — Project folder layout and file responsibilities.
 - [docs/Logical_Design_Exemplars.md](docs/Logical_Design_Exemplars.md) — Code patterns and testing exemplars.
 - [docs/Phase3_Development_Quality_Gates.md](docs/Phase3_Development_Quality_Gates.md) — Implementation backlog and Phase 3 quality gates (new).
@@ -148,7 +148,7 @@ See [docs/Phase3_Development_Quality_Gates.md](docs/Phase3_Development_Quality_G
 
 ## Contributing
 
-Please follow the conventions in [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md).
+Please follow the conventions in [docs/DEVELOPMENT_WORKFLOW.md](docs/project/DEVELOPMENT_WORKFLOW.md).
 
 - Create a branch per feature: `feature/<short-description>`
 - Include tests for new behavior and ensure coverage targets are met locally before opening a PR.

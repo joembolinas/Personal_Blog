@@ -144,42 +144,50 @@ Small monolithic Flask app organized by Blueprints (`routes/guest.py`, `routes/a
 
 ## System Architecture Diagram (Mermaid)
 
-TODO FIX: transform it into ASCII 
+```text
+                           +----------------+      +----------------+
+                           |Browser - Guest |      |Browser - Admin |
+                           +--------+-------+      +--------+-------+
+                                    |                       |
+                                    | GET /, GET /article  | Admin UI
+                                    v                       | requests
+                                 +------+               +----v----+
+                                 |guest_|               | admin_ |
+                                 | bp   |               | bp     |
+                                 +--+---+               +---+----+
+                                    |                       |
+                                    +--------+--------------+
+                                             |
+                                             v
+                                +-------------------------------+
+                                |          Flask App            |
+                                |  (routes, templates, handlers)|
+                                +--------+----------+-----------+
+                                         |          |
+                    public/site flows --->+          +---> validators &
+                                         |                     sanitizer
+                                         v                         ^
+                                +----------------+                |
+                                | Article Model  |<---------------+
+                                |   (M)          |                |
+                                +--------+-------+                |
+                                         |                        |
+                                         v                        |
+                                +----------------+               |
+                                | Filesystem     |               |
+                                | (data/)        |               |
+                                +----------------+               |
+                                                                 |
+                                +----------------+               |
+                                | Markdown       |---------------+
+                                | Renderer (MD)  |
+                                +----------------+
 
-```mermaid
-flowchart LR
-  subgraph UserLayer [User Layer]
-    A[Browser - Guest]
-    B[Browser - Admin]
-  end
-
-  subgraph AppLayer [Application Layer]
-    APP[Flask App]
-    G[guest_bp]
-    AD[admin_bp]
-  end
-
-  subgraph ServiceLayer [Service & Model Layer]
-    M[Article Model]
-    MD[Markdown Renderer]
-    V[Validators & Sanitizer]
-  end
-
-  subgraph DataLayer [Data Layer]
-    FS[(Filesystem - data/)]
-  end
-
-  A -->|GET /, GET /article/:slug| G
-  B -->|Admin UI requests| AD
-  G --> APP
-  AD --> APP
-  APP --> M
-  M --> FS
-  APP --> MD
-  APP --> V
-  MD --> V
-  style AppLayer fill:#f9f,stroke:#333,stroke-width:1px
-  style DataLayer fill:#efe,stroke:#333
+Legend:
+- guest_bp / admin_bp: Blueprints handling guest/admin requests
+- Flask App: coordinates routes, invokes model/renderer/validators
+- Article Model -> Filesystem: persistence of data/{slug}.json
+- Markdown Renderer -> Validators: sanitized HTML pipeline
 ```
 
 ---

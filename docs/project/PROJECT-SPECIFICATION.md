@@ -138,7 +138,7 @@ Filesystem-based storage is chosen for simplicity, portability, and ease of vers
 
 ## 11. Related Specifications / Further Reading
 
-- [DEVELOPMENT_WORKFLOW.md](./DEVELOPMENT_WORKFLOW.md)
+- [DEVELOPMENT_WORKFLOW.md](project/DEVELOPMENT_WORKFLOW.md)
 - [AGENT.md](../AGENT.md)
 - [Flask Documentation](https://flask.palletsprojects.com/)
 - [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/)
