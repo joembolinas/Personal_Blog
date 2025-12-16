@@ -116,7 +116,6 @@ env/
 *.swo
 
 # Project specific
-data/*.json
 .env
 *.log
 ```
