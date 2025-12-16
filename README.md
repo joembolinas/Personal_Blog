@@ -76,26 +76,54 @@ The application follows a simplified **Model-View-Controller (MVC)** pattern:
 
 ## Quick Start
 
-Prerequisites:
-
-- Python 3.8+
-- Git
-
-Clone and run:
-
-```bash
-git clone https://github.com/joembolinas/Personal_Blog.git
-cd Personal_Blog
-python -m venv venv
-venv\Scripts\activate   # Windows
-pip install -r requirements.txt
-python app.py
-```
-
-Open:
-
-- Guest: http://localhost:5000
-- Admin: http://localhost:5000/admin
+## Quick Start
+ 
+ ### Option A: Docker (Recommended)
+ 
+ ```bash
+ # Build image
+ docker build -t personal-blog .
+ 
+ # Run container (mounts data/ directory for persistence)
+ # Linux/Mac:
+ docker run -p 8000:8000 -v $(pwd)/data:/app/data personal-blog
+ 
+ # Windows (PowerShell):
+ docker run -p 8000:8000 -v ${PWD}/data:/app/data personal-blog
+ ```
+ 
+ Visit [http://localhost:8000](http://localhost:8000).
+ 
+ ### Option B: Manual Setup
+ 
+ 1. **Install Dependencies**:
+    ```bash
+    python -m venv .venv
+    # Windows:
+    .venv\Scripts\activate
+    # Linux/Mac:
+    source .venv/bin/activate
+    
+    pip install -r requirements.txt
+    ```
+ 
+ 2. **Configure Admin**:
+    generate a hash for your password:
+    ```bash
+    # Run this once in python shell
+    from utils.security import hash_password
+    print(hash_password("my-secret-password"))
+    ```
+    Set the hash in your environment (or `.env` file):
+    ```bash
+    export ADMIN_PASSWORD_HASH='salt$hash...'
+    export SECRET_KEY='your-secret-key'
+    ```
+ 
+ 3. **Run App**:
+    ```bash
+    flask --app app:create_app run
+    ```
 
 ---
 
@@ -134,15 +162,14 @@ Planned integration items (see docs/Phase3_Development_Quality_Gates.md): adapte
 
 ---
 
-## Project Status & Next Steps
-
-Key pending tasks (high level):
-
-- Implement `models.Article` with robust atomic `save()` / `load()` / `delete()` and comprehensive unit tests.
-- Add `requirements.txt` (pinned versions) and optional `Dockerfile` for production containerization.
-- Add integration tests, CI coverage enforcement (90%), and lint/type checks (`flake8`, `mypy`).
-
-See [docs/Phase3_Development_Quality_Gates.md](docs/Phase3_Development_Quality_Gates.md) for a full, prioritized backlog and quality gates.
+## Project Status
+ 
+ ✅ **Phase 3 COMPLETE**: Core features, Admin UI, and Security implemented.
+ 
+ - **Core**: Article CRUD with atomic file locking.
+ - **Security**: Session hardening, Password hashing (PBKDF2), CSRF protection.
+ - **Deployment**: Dockerized with Gunicorn.
+ - **Quality**: 90%+ Test Coverage.
 
 ---
 
