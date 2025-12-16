@@ -92,7 +92,7 @@ def publish_article(slug):
         abort(400)
     try:
         a = Article.load(slug)
-    except Exception:
+    except ArticleNotFound:
         abort(404)
     a.published = True
     a.save()
