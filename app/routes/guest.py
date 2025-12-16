@@ -14,6 +14,8 @@ def index():
 def article_detail(slug):
     try:
         article = Article.load(slug)
-    except Exception:
+        if not article.published:
+            abort(404)
+    except ArticleNotFound:
         abort(404)
     return render_template('guest/article.html', article=article)
