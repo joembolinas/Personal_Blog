@@ -74,13 +74,13 @@ def create_article():
     if request.method == 'POST':
         if not _verify_csrf(request.form.get('csrf_token')):
             abort(400)
-        slug = request.form.get('slug')
-        title = request.form.get('title')
-        excerpt = request.form.get('excerpt')
-        content = request.form.get('content')
-        tags = [t.strip() for t in (request.form.get('tags') or '').split(',') if t.strip()]
-        a = Article(slug=slug, title=title, excerpt=excerpt, content=content, tags=tags)
-        a.save()
+        from app.services import article_service
+        from app.models.exceptions import ValidationError
+        try:
+            article_service.create_from_form(request.form)
+        except ValidationError as e:
+            # TODO: Flash the error message to the user and re-render the form.
+            abort(400, str(e))
         return redirect(url_for('admin.dashboard'))
     return render_template('admin/article_form.html', csrf_token=session.get('csrf_token'))
 
