@@ -36,41 +36,41 @@ Pre-Implementation Checklist (MANDATORY)
 
 - GOAL-001: Implement core model and file utilities required by remaining features.
 
-| Task | Description | File(s) | Function(s) | Completed | Date |
-|------|-------------|---------|-------------|-----------|------|
-| TASK-001 | Implement atomic file helper and tests | utils/file_ops.py, tests/utils/test_file_ops.py | `atomic_write(path, data: bytes, tmp_suffix='.tmp')` | ✅ | 2025-12-16 |
-| TASK-002 | Implement `models.Article` with persistence and validation | models/article.py, tests/models/test_article.py | `Article.to_dict()`, `Article.from_dict()`, `Article.save()`, `Article.load(slug)`, `Article.delete()`, `Article.all()`, `Article.published_articles()` | ✅ | 2025-12-16 |
-| TASK-003 | Add domain exceptions | models/exceptions.py, tests/models/test_exceptions.py | `ArticleNotFound`, `ValidationError` | ✅ | 2025-12-16 |
+| Task     | Description                                                | File(s)                                               | Function(s)                                                                                                                                             | Completed | Date       |
+| -------- | ---------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---------- |
+| TASK-001 | Implement atomic file helper and tests                     | utils/file_ops.py, tests/utils/test_file_ops.py       | `atomic_write(path, data: bytes, tmp_suffix='.tmp')`                                                                                                    | ✅         | 2025-12-16 |
+| TASK-002 | Implement `models.Article` with persistence and validation | models/article.py, tests/models/test_article.py       | `Article.to_dict()`, `Article.from_dict()`, `Article.save()`, `Article.load(slug)`, `Article.delete()`, `Article.all()`, `Article.published_articles()` | ✅         | 2025-12-16 |
+| TASK-003 | Add domain exceptions                                      | models/exceptions.py, tests/models/test_exceptions.py | `ArticleNotFound`, `ValidationError`                                                                                                                    | ✅         | 2025-12-16 |
 
 ### Implementation Phase 2
 
 - GOAL-002: Implement service layer and basic business logic.
 
-| Task | Description | File(s) | Function(s) | Completed | Date |
-|------|-------------|---------|-------------|-----------|------|
-| TASK-004 | Implement `services/article_service.py` with create/save/publish logic | services/article_service.py, tests/services/test_article_service.py | `create_from_form(form_data)`, `save(article)`, `publish(slug)`, `unpublish(slug)`, `list_articles(sort_by, reverse)` | | |
-| TASK-005 | Add validators for slug/title/excerpt/tags | utils/validators.py, tests/utils/test_validators.py | `validate_slug(s)`, `validate_title(s)`, `normalize_tags(tags)` | | |
+| Task     | Description                                                            | File(s)                                                             | Function(s)                                                                                                           | Completed | Date       |
+| -------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------- | ---------- |
+| TASK-004 | Implement `services/article_service.py` with create/save/publish logic | services/article_service.py, tests/services/test_article_service.py | `create_from_form(form_data)`, `save(article)`, `publish(slug)`, `unpublish(slug)`, `list_articles(sort_by, reverse)` | ✅         | 2025-12-16 |
+| TASK-005 | Add validators for slug/title/excerpt/tags                             | utils/validators.py, tests/utils/test_validators.py                 | `validate_slug(s)`, `validate_title(s)`, `normalize_tags(tags)`                                                       | ✅         | 2025-12-16 |
 
 ### Implementation Phase 3
 
 - GOAL-003: Routes, templates, and security
 
-| Task | Description | File(s) | Function(s) / Endpoints | Completed | Date |
-|------|-------------|---------|------------------------|-----------|------|
-| TASK-006 | Implement guest routes for viewing articles and list | routes/guest.py, templates/guest/*, tests/routes/test_guest.py | `GET /`, `GET /articles/<slug>` | ✅ | 2025-12-16 |
-| TASK-007 | Implement admin routes with session auth and CSRF protection | routes/admin.py, templates/admin/*, tests/routes/test_admin.py | `GET /admin`, `POST /admin/articles/create`, `POST /admin/articles/<slug>/publish` | | |
-| TASK-008 | Add security helpers for password hashing & session config | utils/security.py, tests/utils/test_security.py | `hash_password(pw)`, `check_password(hash,pw)`, `configure_session(app)` | | |
+| Task     | Description                                                  | File(s)                                                        | Function(s) / Endpoints                                                            | Completed | Date       |
+| -------- | ------------------------------------------------------------ | -------------------------------------------------------------- | ---------------------------------------------------------------------------------- | --------- | ---------- |
+| TASK-006 | Implement guest routes for viewing articles and list         | routes/guest.py, templates/guest/*, tests/routes/test_guest.py | `GET /`, `GET /articles/<slug>`                                                    | ✅         | 2025-12-16 |
+| TASK-007 | Implement admin routes with session auth and CSRF protection | routes/admin.py, templates/admin/*, tests/routes/test_admin.py | `GET /admin`, `POST /admin/articles/create`, `POST /admin/articles/<slug>/publish` | ✅         | 2025-12-16 |
+| TASK-008 | Add security helpers for password hashing & session config   | utils/security.py, tests/utils/test_security.py                | `hash_password(pw)`, `check_password(hash,pw)`, `configure_session(app)`           | ✅         | 2025-12-16 |
 
 ### Implementation Phase 4
 
 - GOAL-004: Tests, CI, packaging and docs
 
-| Task | Description | File(s) | Commands / Validation | Completed | Date |
-|------|-------------|---------|-----------------------|-----------|------|
-| TASK-009 | Add pytest fixtures and integration tests | tests/conftest.py, tests/integration/test_smoke.py | `pytest -q` | | |
-| TASK-010 | Add `requirements.txt` with pinned versions | requirements.txt | verify `pip install -r requirements.txt` | | |
-| TASK-011 | Add `Dockerfile` and `Makefile` for dev tasks | Dockerfile, Makefile | `docker build .` | | |
-| TASK-012 | Update README.md and docs/ with quickstart and ADRs | README.md, docs/ARCHITECTURE_DECISIONS.md | `markdownlint` (if configured) | | |
+| Task     | Description                                         | File(s)                                            | Commands / Validation                    | Completed | Date       |
+| -------- | --------------------------------------------------- | -------------------------------------------------- | ---------------------------------------- | --------- | ---------- |
+| TASK-009 | Add pytest fixtures and integration tests           | tests/conftest.py, tests/integration/test_smoke.py | `pytest -q`                              | ✅         | 2025-12-16 |
+| TASK-010 | Add `requirements.txt` with pinned versions         | requirements.txt                                   | verify `pip install -r requirements.txt` | ✅         | 2025-12-16 |
+| TASK-011 | Add `Dockerfile` and `Makefile` for dev tasks       | Dockerfile, Makefile                               | `docker build .`                         |           |            |
+| TASK-012 | Update README.md and docs/ with quickstart and ADRs | README.md, docs/ARCHITECTURE_DECISIONS.md          | `markdownlint` (if configured)           |           |            |
 
 ## 3. Alternatives
 

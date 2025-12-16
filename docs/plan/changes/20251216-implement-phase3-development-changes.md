@@ -25,6 +25,24 @@ Initial creation of the Phase 3 implementation plan and tracking file. No code c
 - templates/guest/index.html - guest index template
 - templates/guest/article.html - guest article template
 - tests/routes/test_guest.py - tests for guest routes
+- utils/security.py - admin password hashing and session config
+- routes/admin.py - admin blueprint with login, dashboard, create and publish
+- templates/admin/login.html - admin login template
+- templates/admin/dashboard.html - admin dashboard
+- templates/admin/article_form.html - admin create article form
+- tests/routes/test_admin.py - tests for admin auth and create
+- utils/validators.py - validators for slug, title, and tags
+- services/article_service.py - business logic for article create/save/publish/list
+- tests/utils/test_validators.py - tests for validators
+- tests/services/test_article_service.py - tests for service layer
+- tests/conftest.py - pytest fixtures: app, client, tmp_data_dir, admin_session
+- tests/integration/test_smoke.py - integration smoke test (create + view)
+- utils/validators.py - validators for slug, title, and tags
+- services/article_service.py - business logic for article create/save/publish/list
+- tests/utils/test_validators.py - tests for validators
+- tests/services/test_article_service.py - tests for service layer
+- tests/conftest.py - pytest fixtures: app, client, tmp_data_dir, admin_session
+- tests/integration/test_smoke.py - integration smoke test (create + view)
 
 ### Modified
 
@@ -37,7 +55,7 @@ Initial creation of the Phase 3 implementation plan and tracking file. No code c
 
 ## Release Summary
 
-**Total Files Affected**: 12
+**Total Files Affected**: 19
 
 ### Files Created (8)
 
@@ -49,6 +67,12 @@ Initial creation of the Phase 3 implementation plan and tracking file. No code c
 - tests/utils/test_file_ops.py - tests for atomic_write
 - tests/models/test_exceptions.py - tests for domain exceptions
 - tests/models/test_article.py - tests for Article model
+- utils/security.py - admin password hashing and session config
+- routes/admin.py - admin blueprint with login, dashboard, create and publish
+- templates/admin/login.html - admin login template
+- templates/admin/dashboard.html - admin dashboard
+- templates/admin/article_form.html - admin create article form
+- tests/routes/test_admin.py - tests for admin auth and create
 - routes/guest.py - guest blueprint with index and article endpoints
 - templates/guest/index.html - guest index template
 - templates/guest/article.html - guest article template
