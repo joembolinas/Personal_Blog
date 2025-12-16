@@ -12,8 +12,10 @@ from app.utils.file_ops import atomic_write
 DATA_DIR = Path('data') / 'articles'
 
 
+from datetime import timezone
+
 def _now_iso() -> str:
-    return datetime.utcnow().isoformat() + 'Z'
+    return datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
 
 
 @dataclass
