@@ -1,5 +1,4 @@
-roadmap.sh.md
-*.roadmap.sh.md 
+
 *.vscode/
 *.github/
 *.venv/
