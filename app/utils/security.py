@@ -21,7 +21,7 @@ def check_password(stored: str, password: str) -> bool:
     except ValueError:
         return False
     dk = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt.encode('utf-8'), 100_000)
-    return dk.hex() == hexd
+    return secrets.compare_digest(dk.hex(), hexd)
 
 
 def configure_session(app) -> None:
