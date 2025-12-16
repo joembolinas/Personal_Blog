@@ -1,0 +1,28 @@
+{
+  "project": {
+    "name": "Personal Blog",
+    "type": "web-application",
+    "language": "python",
+    "framework": "flask"
+  },
+  "documentation": {
+    "primary": "AGENT.md",
+    "github_copilot": ".github/COPILOT-INSTRCTIONS.md",
+    "cursor": ".cursorrules"
+  },
+  "standards": {
+    "style_guide": "PEP 8",
+    "line_length": 88,
+    "type_hints": true,
+    "docstring_style": "google"
+  },
+  "testing": {
+    "framework": "pytest",
+    "coverage_required": 90
+  },
+  "security": {
+    "csrf_protection": true,
+    "input_validation": "required",
+    "environment_variables": true
+  }
+}

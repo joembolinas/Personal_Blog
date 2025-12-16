@@ -5,6 +5,8 @@
 
 ---
 
+REMEMBER [DEVELOPMENT_WORKFLOW ](D:\devfiles\mini-project\Personal_Blog\docs\DEVELOPMENT_WORKFLOW.md) that this file is the master plan, this plan is absolute.
+
 ## 📋 Project Overview
 
 **Personal Blog** is a lightweight, filesystem-based content management system for publishing articles. Built with Python Flask, it demonstrates clean architecture principles while maintaining simplicity.
@@ -258,7 +260,7 @@ def process_article(
     Args:
         slug: Article identifier
         data: Raw article data
-    
+  
     Returns:
         Article instance or None if invalid
     """
@@ -278,14 +280,14 @@ def function_name(param1: str, param2: int) -> bool:
     Args:
         param1: Description of first parameter
         param2: Description of second parameter
-    
+  
     Returns:
         Description of return value
-    
+  
     Raises:
         ValueError: When input is invalid
         FileNotFoundError: When file doesn't exist
-    
+  
     Example:
         >>> function_name("test", 42)
         True
@@ -513,14 +515,14 @@ def handler_name():
     if request.method == 'POST':
         # 1. Get form data
         data = request.form.to_dict()
-    
+  
         # 2. Validate
         is_valid, errors = validate_input(data)
         if not is_valid:
             for error in errors:
                 flash(error, 'error')
             return redirect(url_for('current_route'))
-    
+  
         # 3. Process
         try:
             # Business logic here
@@ -529,7 +531,7 @@ def handler_name():
         except Exception as e:
             flash(f'Error: {str(e)}', 'error')
             return redirect(url_for('current_route'))
-    
+  
         # 4. Success feedback
         flash('Operation successful', 'success')
         return redirect(url_for('next_route'))
@@ -674,7 +676,7 @@ def validate_slug(slug: str) -> bool:
   
     Args:
         slug: String to validate
-    
+  
     Returns:
         True if valid, False otherwise
     """
@@ -687,7 +689,7 @@ def validate_article_data(data: Dict[str, Any]) -> Tuple[bool, List[str]]:
   
     Args:
         data: Dictionary containing form fields
-    
+  
     Returns:
         Tuple of (is_valid, list_of_error_messages)
     """
