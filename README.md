@@ -3,9 +3,9 @@
     <img src="https://roadmap.sh/favicon.ico" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Personal Blog</h3>
+<h3 align="center">Personal Blog</h3>
 
-  <p align="center">
+<p align="center">
     A simple, filesystem-based content management system for publishing articles.
     <br />
     <a href="https://roadmap.sh"><strong>Explore roadmap.sh »</strong></a>
@@ -13,13 +13,14 @@
     <br />
     <a href="https://roadmap.sh/backend/projects">Project Architecture</a>
     ·
-    <a href="https://github.com/yourusername/personal-blog/issues">Technology Stack</a>
+    <a href="https://github.com/joembolinas/Personal_Blog/issues">Technology Stack</a>
     ·
-    <a href="https://github.com/yourusername/personal-blog/issues">Project Structure</a>
+    <a href="https://github.com/joembolinas/Personal_Blog/issues">Project Structure</a>
   </p>
 </div>
 
 <!-- ABLE TO USE BOTH BANNERS IF NEEDED, BUT ONE IS CLEANER -->
+
 <div align="center">
   <img src="https://assets.roadmap.sh/guest/blog-guest-pages.png" alt="Personal Blog Guest Pages" width="100%">
 </div>
@@ -33,12 +34,16 @@ The project emphasizes simplicity by utilizing the filesystem for data storage, 
 ## Key Features
 
 ### 🌍 Guest Section
+
 Accessible to all visitors:
+
 - **Home Page**: Browse a curated list of published articles.
 - **Article Viewer**: Read full articles with distraction-free layout and publication dates.
 
 ### 🔒 Admin Section
+
 Secured area for content management:
+
 - **Dashboard**: Overview of all articles with quick actions.
 - **Create & Edit**: Rich forms to draft new posts or update existing content.
 - **Delete**: Remove outdated or unwanted articles.
@@ -65,69 +70,95 @@ The application follows a simplified **Model-View-Controller (MVC)** pattern:
 
 > **Note**: This architecture is designed for ease of use and learning, avoiding the complexity of a full RDBMS.
 
-## Getting Started
-
-### Prerequisites
-- Python 3.x installed on your machine.
-
-### Installation
-
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/yourusername/personal-blog.git
-    cd personal-blog
-    ```
-
-2.  **Set up the environment** (Recommended)
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-    ```
-
-3.  **Run the application**
-    ```bash
-    python app.py
-    ```
-
-4.  **Access the blog**
-    - Guest View: `http://localhost:5000`
-    - Admin Panel: `http://localhost:5000/admin`
-
-## Project Structure
-
-```plaintext
-/
-├── data/               # Article storage (JSON/Markdown files)
-├── static/             # CSS stylesheets and images
-├── templates/          # HTML templates for pages
-├── app.py              # Main application entry point
-├── requirements.txt    # Python dependencies
-└── README.md           # Project documentation
-```
-
-## Development Workflow
-
-1.  **Plan**: Define the data structure for articles.
-2.  **Build**: Implement the file storage system and Python backend.
-3.  **Design**: Create HTML templates and style them with CSS.
-4.  **Secure**: Add basic authentication for the admin dashboard.
-5.  **Test**: Verify create, read, update, and delete (CRUD) operations.
-
-## Coding Standards
-
-- **Python**: Adhere to [PEP 8](https://pep8.org/) guidelines.
-- **HTML/CSS**: Maintain semantic HTML and clean, organized CSS classes.
-- **Commits**: Use descriptive commit messages.
-
-## Testing
-
-Testing is performed manually during this phase:
-- Verify page navigation.
-- Validate form submissions (creation and editing).
-- Check authentication barriers.
+## Quick Start
 
 ---
 
-<div align="center">
-  <sub>Built with ❤️ for the <a href="https://roadmap.sh">roadmap.sh</a> community</sub>
-</div>
+## Quick Start
+
+Prerequisites:
+
+- Python 3.8+
+- Git
+
+Clone and run:
+
+```bash
+git clone https://github.com/joembolinas/Personal_Blog.git
+cd Personal_Blog
+python -m venv venv
+venv\Scripts\activate   # Windows
+pip install -r requirements.txt
+python app.py
+```
+
+Open:
+
+- Guest: http://localhost:5000
+- Admin: http://localhost:5000/admin
+
+---
+
+## What this project provides
+
+- Filesystem-based article storage (`data/{slug}.json`) for easy versioning and backups.
+- Minimal Flask-based CMS with public guest views and a protected admin area.
+- Automated tests and CI guidance (project aims for 90% coverage).
+
+---
+
+## Documentation (developer-facing)
+
+The repository includes curated documentation to onboard contributors and guide implementations. Read these first:
+
+- [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — Contributor workflow, Copilot customization, and project practices.
+- [docs/PROJECT_ARCHITECTURE.md](docs/PROJECT_ARCHITECTURE.md) — Architecture decisions and component responsibilities.
+- [docs/EPIC-PRD.md](docs/EPIC-PRD.md) — Epic-level product requirements and feature breakdowns.
+- [docs/TECH-STACK.md](docs/TECH-STACK.md) — Recommended packages and versions.
+- [docs/Project_Folders_Structure_Blueprint.md](docs/Project_Folders_Structure_Blueprint.md) — Project folder layout and file responsibilities.
+- [docs/Logical_Design_Exemplars.md](docs/Logical_Design_Exemplars.md) — Code patterns and testing exemplars.
+- [docs/Phase3_Development_Quality_Gates.md](docs/Phase3_Development_Quality_Gates.md) — Implementation backlog and Phase 3 quality gates (new).
+- [docs/project_memory.md](docs/project_memory.md) — Project memory, goals, and integration notes.
+
+---
+
+## Integration & Reusability (from project memory)
+
+This project is structured so components can be reused inside a larger application. Key notes:
+
+- Keep domain logic (`models.py`) decoupled from Flask handlers so the model can be imported as a library in other projects.
+- Provide small adapter wrappers if embedding into larger systems (e.g., `adapters/` exposing a clear programmatic API).
+- Include example import/usage patterns in `README` or `docs/` when creating integration scenarios.
+
+Planned integration items (see docs/Phase3_Development_Quality_Gates.md): adapters, example embeddings, and additional CI checks for cross-platform support (Windows + Linux).
+
+---
+
+## Project Status & Next Steps
+
+Key pending tasks (high level):
+
+- Implement `models.Article` with robust atomic `save()` / `load()` / `delete()` and comprehensive unit tests.
+- Add `requirements.txt` (pinned versions) and optional `Dockerfile` for production containerization.
+- Add integration tests, CI coverage enforcement (90%), and lint/type checks (`flake8`, `mypy`).
+
+See [docs/Phase3_Development_Quality_Gates.md](docs/Phase3_Development_Quality_Gates.md) for a full, prioritized backlog and quality gates.
+
+---
+
+## Contributing
+
+Please follow the conventions in [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md).
+
+- Create a branch per feature: `feature/<short-description>`
+- Include tests for new behavior and ensure coverage targets are met locally before opening a PR.
+
+---
+
+## License & Attribution
+
+This mini-project is provided as-is for learning and experimentation.
+
+---
+
+v1.0.0 | Active | Last Updated: Dec 16 2025 - 14:30
