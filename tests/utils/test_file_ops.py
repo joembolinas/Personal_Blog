@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from utils.file_ops import atomic_write
+from app.utils.file_ops import atomic_write
 
 
 def test_atomic_write_creates_file(tmp_path):

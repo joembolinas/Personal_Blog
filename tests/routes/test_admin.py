@@ -1,29 +1,19 @@
 import os
 from flask import Flask
 
-from routes.admin import bp as admin_bp
-from utils.security import hash_password
-from models.article import Article
+from app.routes.admin import bp as admin_bp
+from app.utils.security import hash_password
+from app.models.article import Article
 
 
-def make_app():
-    from pathlib import Path
-    project_root = Path(__file__).resolve().parents[2]
-    app = Flask(__name__, template_folder=str(project_root / 'templates'))
-    app.secret_key = 'test-secret'
-    app.register_blueprint(admin_bp)
-    return app
-
-
-def test_admin_login_and_create_article(tmp_path, monkeypatch):
+def test_admin_login_and_create_article(client, monkeypatch, tmp_path):
     # set admin password hash
     os.environ['ADMIN_PASSWORD_HASH'] = hash_password('secret')
 
-    # isolate data dir
-    monkeypatch.setattr('models.article.DATA_DIR', tmp_path)
+    # isolate data dir (already done by conftest if we used tmp_data_dir, but explicit is fine)
+    # Actually, let's use the explicit one here to align with existing test logic
+    monkeypatch.setattr('app.models.article.DATA_DIR', tmp_path)
 
-    app = make_app()
-    client = app.test_client()
 
     # GET login to obtain CSRF (session cookie)
     rv = client.get('/admin/login')

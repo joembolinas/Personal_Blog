@@ -1,6 +1,6 @@
 
 import pytest
-from utils.security import hash_password, check_password, configure_session
+from app.utils.security import hash_password, check_password, configure_session
 
 def test_hash_password():
     """Test that hashing returns a valid format and is random."""

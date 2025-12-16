@@ -1,4 +1,4 @@
-from utils.validators import validate_slug, validate_title, normalize_tags
+from app.utils.validators import validate_slug, validate_title, normalize_tags
 
 
 def test_validate_slug():
