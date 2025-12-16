@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Admin Dashboard</title>
+  </head>
+  <body>
+    <h1>Admin Dashboard</h1>
+    <p><a href="/admin/articles/create">Create Article</a> | <a href="/admin/logout">Logout</a></p>
+    <ul>
+      {% for a in articles %}
+      <li>{{ a.title }} — {{ a.slug }} - {% if a.published %}Published{% else %}Draft{% endif %}
+        <form method="post" action="/admin/articles/{{ a.slug }}/publish" style="display:inline">
+          <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+          <button type="submit">Publish</button>
+        </form>
+      </li>
+      {% else %}
+      <li>No articles.</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
