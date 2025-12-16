@@ -69,8 +69,8 @@ Pre-Implementation Checklist (MANDATORY)
 | -------- | --------------------------------------------------- | -------------------------------------------------- | ---------------------------------------- | --------- | ---------- |
 | TASK-009 | Add pytest fixtures and integration tests           | tests/conftest.py, tests/integration/test_smoke.py | `pytest -q`                              | ✅         | 2025-12-16 |
 | TASK-010 | Add `requirements.txt` with pinned versions         | requirements.txt                                   | verify `pip install -r requirements.txt` | ✅         | 2025-12-16 |
-| TASK-011 | Add `Dockerfile` and `Makefile` for dev tasks       | Dockerfile, Makefile                               | `docker build .`                         |           |            |
-| TASK-012 | Update README.md and docs/ with quickstart and ADRs | README.md, docs/ARCHITECTURE_DECISIONS.md          | `markdownlint` (if configured)           |           |            |
+| TASK-011 | Add `Dockerfile` and `Makefile` for dev tasks       | Dockerfile, Makefile                               | `docker build .`                         | ✅         | 2025-12-16 |
+| TASK-012 | Update README.md and docs/ with quickstart and ADRs | README.md, docs/ARCHITECTURE_DECISIONS.md          | `markdownlint` (if configured)           | ✅         | 2025-12-16 |
 
 ## 3. Alternatives
 
