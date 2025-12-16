@@ -1,5 +1,13 @@
 
-*.vscode/
-*.github/
+
+
+*.prompt.md
+*.instructions.md
+COPILOT-INSTRUCTIONS.md
+mcp.json
+
+
 *.venv/
 *.env
+.github/agents/4.1-Beast.agent.md
+docs/project_memory.md
