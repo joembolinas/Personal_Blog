@@ -94,7 +94,10 @@ class Article:
                 text = p.read_text(encoding='utf-8')
                 data = json.loads(text)
                 articles.append(cls.from_dict(data))
-            except Exception:
+            except (ValidationError, json.JSONDecodeError) as e:
+                # Optional: Add logging to see which files are failing.
+                # import logging
+                # logging.warning(f"Skipping invalid article {p.name}: {e}")
                 continue
         return articles
 
