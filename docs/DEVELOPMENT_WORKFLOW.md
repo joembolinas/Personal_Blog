@@ -1787,7 +1787,7 @@ Create `.ai-coding-assistant.json`:
   },
   "testing": {
     "framework": "pytest",
-    "coverage_required": 80
+    "coverage_required": 90
   },
   "security": {
     "csrf_protection": true,
