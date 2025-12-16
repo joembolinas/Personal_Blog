@@ -15,6 +15,16 @@ Initial creation of the Phase 3 implementation plan and tracking file. No code c
 
 - /plan/implement-phase3-development-1.md - Implementation plan for Phase 3 backlog
 - /plan/changes/20251216-implement-phase3-development-changes.md - Changes tracking file (this file)
+- utils/file_ops.py - atomic file write helper
+- models/exceptions.py - domain exceptions for Article
+- models/article.py - core Article model with persistence
+- tests/utils/test_file_ops.py - tests for atomic_write
+- tests/models/test_exceptions.py - tests for domain exceptions
+- tests/models/test_article.py - tests for Article model
+- routes/guest.py - guest blueprint with index and article endpoints
+- templates/guest/index.html - guest index template
+- templates/guest/article.html - guest article template
+- tests/routes/test_guest.py - tests for guest routes
 
 ### Modified
 
@@ -24,14 +34,25 @@ Initial creation of the Phase 3 implementation plan and tracking file. No code c
 
 - N/A
 
+
 ## Release Summary
 
-**Total Files Affected**: 2
+**Total Files Affected**: 12
 
-### Files Created (2)
+### Files Created (8)
 
 - /plan/implement-phase3-development-1.md - Implementation plan
 - /plan/changes/20251216-implement-phase3-development-changes.md - Tracking file
+- utils/file_ops.py - atomic file write helper
+- models/exceptions.py - domain exceptions for Article
+- models/article.py - core Article model with persistence
+- tests/utils/test_file_ops.py - tests for atomic_write
+- tests/models/test_exceptions.py - tests for domain exceptions
+- tests/models/test_article.py - tests for Article model
+- routes/guest.py - guest blueprint with index and article endpoints
+- templates/guest/index.html - guest index template
+- templates/guest/article.html - guest article template
+- tests/routes/test_guest.py - tests for guest routes
 
 ### Files Modified (0)
 
