@@ -30,7 +30,7 @@
 
 ---
 
-REMEMBER [DEVELOPMENT_WORKFLOW ](D:\devfiles\mini-project\Personal_Blog\docs\project\DEVELOPMENT_WORKFLOW.md) that this file is the master plan, this plan is absolute.
+REMEMBER [DEVELOPMENT_WORKFLOW ](docs/project/DEVELOPMENT_WORKFLOW.md) that this file is the master plan, this plan is absolute.
 
 ## 📋 Project Overview
 
