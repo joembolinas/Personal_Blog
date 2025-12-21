@@ -1,11 +1,36 @@
-# AGENT.md - AI Assistant Context for Personal Blog
+# GEMINI.md - AI Assistant Context for Personal Blog
 
 > **Universal AI Assistant Guide**
-> Compatible with: GitHub Copilot, Cursor, Claude Code, Gemini Code, GPT-Codex, and other AI coding assistants
+> Compatible with: Gemini Code, GitHub Copilot, Cursor, Claude Code.
 
 ---
 
-REMEMBER [DEVELOPMENT_WORKFLOW ](D:\devfiles\mini-project\Personal_Blog\docs\DEVELOPMENT_WORKFLOW.md) that this file is the master plan, this plan is absolute.
+## 🚨 CRITICAL: OFFICIAL DOCUMENTATION SOURCE
+
+**The following files are the SINGLE SOURCE OF TRUTH for this project. All other documentation is supplemental.**
+
+1.  **Workflow**: `docs/project/DEVELOPMENT_WORKFLOW.md`
+2.  **Architecture**: `docs/project/PROJECT_ARCHITECTURE.md`
+3.  **Tech Stack**: `docs/project/TECH-STACK.md`
+4.  **Specifications**: `docs/project/PROJECT-SPECIFICATION.md` & `docs/project/EPIC-PRD.md`
+5.  **Structure**: `docs/project/PROJECT-STRUCTURE.md`
+6.  **Design**: `docs/project/LOGICAL-DESIGN.md`
+
+**Behavioral Rules (Migrated from [.github/COPILOT-INSTRUCTIONS.md]):**
+1.  **No AI Internals in Public Docs**: Keep AI config in `.github/`.
+2.  **Atomic Writes**: For persistence, use `tmp` write + `Path.replace()` (see `utils/file_ops.py`).
+3.  **Context-Aware**: Mirror existing function signatures and docstrings.
+4.  **Security**: No plaintext secrets.
+5.  **Coverage**: Maintain 90% CI coverage.
+
+**Markdown Standards (Migrated from [.github/instructions/markdown.instructions.md]):**
+- **Headings**: Use H2/H3 (No H1 in content body).
+- **Frontmatter**: Required fields: `title`, `author`, `post_slug`, `categories`, `tags`, `summary`, `date`.
+- **Line Length**: 80-400 chars.
+
+---
+
+REMEMBER [DEVELOPMENT_WORKFLOW ](docs/project/DEVELOPMENT_WORKFLOW.md) that this file is the master plan, this plan is absolute.
 
 ## 📋 Project Overview
 

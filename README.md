@@ -6,30 +6,51 @@
 <h3 align="center">Personal Blog</h3>
 
 <p align="center">
-    A simple, filesystem-based content management system for publishing articles.
-    <br />
-    <a href="https://roadmap.sh"><strong>Explore roadmap.sh »</strong></a>
+    A lightweight, filesystem-based CMS for publishing articles. <br/>
+    <a href="https://roadmap.sh/projects/personal-blog"><strong>Project URL »</strong></a>
     <br />
     <br />
     <a href="https://roadmap.sh/backend/projects">Project Architecture</a>
     ·
     <a href="https://github.com/joembolinas/Personal_Blog/issues">Technology Stack</a>
     ·
-    <a href="https://github.com/joembolinas/Personal_Blog/issues">Project Structure</a>
+    <a href="https://github.com/joembolinas/Personal_Blog/issues">Report Bug</a>
   </p>
 </div>
 
-<!-- ABLE TO USE BOTH BANNERS IF NEEDED, BUT ONE IS CLEANER -->
+<div align="center">
+
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+
+</div>
 
 <div align="center">
   <img src="https://assets.roadmap.sh/guest/blog-guest-pages.png" alt="Personal Blog Guest Pages" width="100%">
 </div>
 
-## Project Overview
+## 💡 About The Project
 
-**Personal Blog** is a lightweight blogging platform designed to help users write and publish articles effortlessly. It features a separation of concerns between public access and administrative control, ensuring a smooth reading experience for guests and a robust management interface for the author.
+**Personal Blog** is a practice project designed to demonstrate core backend development skills—**templating, filesystem operations, authentication, and session management**—without the complexity of a heavy database.
 
-The project emphasizes simplicity by utilizing the filesystem for data storage, eliminating the need for complex database setups during the initial phase.
+### Why This Exists
+
+I built this project to:
+
+* Practise comprehensive **Python Web Development**.
+* Showcase my ability to build a **Simple CMS** from scratch.
+* Demonstrate mastery of **MVC Architecture** in a RESTful environment.
+
+### Who This Is For
+
+* **Developers**: Looking for a modular CMS module to integrate into larger project in Python.
+* **Students**: Wanting to learn how to build a content management system for blogs or notes.
+* **Learners**: Exploring how to implement authentication and file handling manually.
+
+---
+
+## 🔥 Key Features
 
 ## Key Features
 
@@ -70,32 +91,61 @@ The application follows a simplified **Model-View-Controller (MVC)** pattern:
 
 > **Note**: This architecture is designed for ease of use and learning, avoiding the complexity of a full RDBMS.
 
-## Quick Start
-
 ---
 
+
+
 ## Quick Start
 
-Prerequisites:
-
-- Python 3.8+
-- Git
-
-Clone and run:
+### Option A: Docker (Recommended)
 
 ```bash
-git clone https://github.com/joembolinas/Personal_Blog.git
-cd Personal_Blog
-python -m venv venv
-venv\Scripts\activate   # Windows
-pip install -r requirements.txt
-python app.py
+ # Build image
+ docker build -t personal-blog .
+ 
+ # Run container (mounts data/ directory for persistence)
+ # Linux/Mac:
+ docker run -p 8000:8000 -v $(pwd)/data:/app/data personal-blog
+ 
+ # Windows (PowerShell):
+ docker run -p 8000:8000 -v ${PWD}/data:/app/data personal-blog
 ```
 
-Open:
+ Visit [http://localhost:8000](http://localhost:8000).
 
-- Guest: http://localhost:5000
-- Admin: http://localhost:5000/admin
+### Option B: Manual Setup
+
+1. **Install Dependencies**:
+
+   ```bash
+   python -m venv .venv
+   # Windows:
+   .venv\Scripts\activate
+   # Linux/Mac:
+   source .venv/bin/activate
+
+   pip install -r requirements.txt
+   ```
+2. **Configure Admin**:
+   generate a hash for your password:
+
+   ```bash
+   # Run this once in python shell
+   from utils.security import hash_password
+   print(hash_password("my-secret-password"))
+   ```
+
+   Set the hash in your environment (or `.env` file):
+
+   ```bash
+   export ADMIN_PASSWORD_HASH='salt$hash...'
+   export SECRET_KEY='your-secret-key'
+   ```
+3. **Run App**:
+
+   ```bash
+   flask --app app:create_app run
+   ```
 
 ---
 
@@ -111,10 +161,10 @@ Open:
 
 The repository includes curated documentation to onboard contributors and guide implementations. Read these first:
 
-- [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — Contributor workflow, Copilot customization, and project practices.
-- [docs/PROJECT_ARCHITECTURE.md](docs/PROJECT_ARCHITECTURE.md) — Architecture decisions and component responsibilities.
-- [docs/EPIC-PRD.md](docs/EPIC-PRD.md) — Epic-level product requirements and feature breakdowns.
-- [docs/TECH-STACK.md](docs/TECH-STACK.md) — Recommended packages and versions.
+- [docs/DEVELOPMENT_WORKFLOW.md](docs/project/DEVELOPMENT_WORKFLOW.md) — Contributor workflow, Copilot customization, and project practices.
+- [docs/PROJECT_ARCHITECTURE.md](docs/project/PROJECT_ARCHITECTURE.md) — Architecture decisions and component responsibilities.
+- [docs/EPIC-PRD.md](docs/project/EPIC-PRD.md) — Epic-level product requirements and feature breakdowns.
+- [docs/TECH-STACK.md](docs/project/TECH-STACK.md) — Recommended packages and versions.
 - [docs/Project_Folders_Structure_Blueprint.md](docs/Project_Folders_Structure_Blueprint.md) — Project folder layout and file responsibilities.
 - [docs/Logical_Design_Exemplars.md](docs/Logical_Design_Exemplars.md) — Code patterns and testing exemplars.
 - [docs/Phase3_Development_Quality_Gates.md](docs/Phase3_Development_Quality_Gates.md) — Implementation backlog and Phase 3 quality gates (new).
@@ -122,7 +172,7 @@ The repository includes curated documentation to onboard contributors and guide 
 
 ---
 
-## Integration & Reusability (from project memory)
+## Integration & Reusability
 
 This project is structured so components can be reused inside a larger application. Key notes:
 
@@ -134,21 +184,20 @@ Planned integration items (see docs/Phase3_Development_Quality_Gates.md): adapte
 
 ---
 
-## Project Status & Next Steps
+## Project Status
 
-Key pending tasks (high level):
+ ✅ **Phase 3 COMPLETE**: Core features, Admin UI, and Security implemented.
 
-- Implement `models.Article` with robust atomic `save()` / `load()` / `delete()` and comprehensive unit tests.
-- Add `requirements.txt` (pinned versions) and optional `Dockerfile` for production containerization.
-- Add integration tests, CI coverage enforcement (90%), and lint/type checks (`flake8`, `mypy`).
-
-See [docs/Phase3_Development_Quality_Gates.md](docs/Phase3_Development_Quality_Gates.md) for a full, prioritized backlog and quality gates.
+- **Core**: Article CRUD with atomic file locking.
+- **Security**: Session hardening, Password hashing (PBKDF2), CSRF protection.
+- **Deployment**: Dockerized with Gunicorn.
+- **Quality**: 90%+ Test Coverage.
 
 ---
 
 ## Contributing
 
-Please follow the conventions in [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md).
+Please follow the conventions in [docs/DEVELOPMENT_WORKFLOW.md](docs/project/DEVELOPMENT_WORKFLOW.md).
 
 - Create a branch per feature: `feature/<short-description>`
 - Include tests for new behavior and ensure coverage targets are met locally before opening a PR.
