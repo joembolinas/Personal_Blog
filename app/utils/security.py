@@ -10,7 +10,7 @@ def hash_password(password: str) -> str:
     Returns: salt$hexdigest
     """
     salt = secrets.token_hex(16)
-    dk = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt.encode('utf-8'), 100_000)
+    dk = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt.encode('utf-8'), 600_000)
     return f"{salt}${dk.hex()}"
 
 
