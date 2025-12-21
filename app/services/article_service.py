@@ -44,8 +44,9 @@ def unpublish(slug: str) -> Article:
 
 def list_articles(sort_by: str = 'created_at', reverse: bool = True) -> List[Article]:
     articles = Article.all()
-    try:
-        articles.sort(key=lambda a: getattr(a, sort_by), reverse=reverse)
-    except Exception:
-        pass
+    # Validate sort_by attribute exists before sorting
+    if articles and not hasattr(articles[0], sort_by):
+        raise ValidationError(f"Invalid sort_by attribute: {sort_by}")
+    
+    articles.sort(key=lambda a: getattr(a, sort_by), reverse=reverse)
     return articles
